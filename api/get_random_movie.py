@@ -4,7 +4,7 @@ from flask_restful import Resource, Api
 from services.random_movie import get_random_movie
 
 class GetRandomMovie(Resource):
-  def get(self):
+  def post(self):
     body = request.json
     try:
       genres = body['genres']
