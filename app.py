@@ -11,6 +11,7 @@ class Index(Resource):
   def get(self):
     return 'random movie api'
 
+api.add_resource(Index, '/')
 api.add_resource(GetRandomMovie, '/movie')
 api.add_resource(GetCategories, '/categories')
 
