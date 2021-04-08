@@ -8,12 +8,12 @@ def get_random_movie(genres):
   genres = get_categories_parsed(genres)
   rand_page_num = random.randint(1,max_page)
   res = requests.get(f'https://www.filmweb.pl/films/search?genres={genres}&orderBy=popularity&descending=true&page={rand_page_num}')
-  print(f'https://www.filmweb.pl/films/search?genres={genres}orderBy=popularity&descending=true&page={rand_page_num}')
+  print(f'https://www.filmweb.pl/films/search?genres={genres}&orderBy=popularity&descending=true&page={rand_page_num}')
 
   i = 2
   while(res.status_code == 404):
     rand_page_num = random.randint(1, max_page/i)
-    res = requests.get(f'https://www.filmweb.pl/films/search?genres={genres}orderBy=popularity&descending=true&page={rand_page_num}'),
+    res = requests.get(f'https://www.filmweb.pl/films/search?genres={genres}&orderBy=popularity&descending=true&page={rand_page_num}'),
     i += 2
 
   soup = bs(res.content, features="lxml")
