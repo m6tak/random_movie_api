@@ -7,7 +7,7 @@ def get_random_movie(genres):
   max_page = 1000
   genres = get_categories_parsed(genres)
   rand_page_num = random.randint(1,max_page)
-  res = requests.get(f'https://www.filmweb.pl/films/search?genres={genres}orderBy=popularity&descending=true&page={rand_page_num}')
+  res = requests.get(f'https://www.filmweb.pl/films/search?genres={genres}&orderBy=popularity&descending=true&page={rand_page_num}')
   print(f'https://www.filmweb.pl/films/search?genres={genres}orderBy=popularity&descending=true&page={rand_page_num}')
 
   i = 2
