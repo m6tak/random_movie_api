@@ -7,6 +7,7 @@ class GetRandomMovie(Resource):
   def post(self):
     body = request.json
     try:
+      print(body);
       genres = body['genres']
       genres_arr = genres.split(', ')
       return get_random_movie(genres_arr)
