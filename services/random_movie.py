@@ -22,7 +22,11 @@ def get_random_movie(genres):
   movie = random.choice(movies)
 
   card = movie.select('.filmPreview__card')[0]
-  poster = movie.select('.filmPreview__poster')[0].select('.poster')[0]['data-image']
+  poster = 'no poster'
+  try:
+    poster = movie.select('.filmPreview__poster')[0].select('.poster')[0]['data-image']
+  except:
+    pass
 
   movie_url = card.select('.filmPreview__link')[0]['href']
   filmweb_page = f'https://filmweb.pl{movie_url}'

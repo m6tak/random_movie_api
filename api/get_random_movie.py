@@ -12,4 +12,5 @@ class GetRandomMovie(Resource):
       genres_arr = genres.split(', ')
       return get_random_movie(genres_arr)
     except:
+      print('except')
       return get_random_movie([])
