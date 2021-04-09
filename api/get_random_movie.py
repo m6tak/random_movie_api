@@ -9,8 +9,10 @@ class GetRandomMovie(Resource):
     try:
       print(body);
       genres = body['genres']
+      start_year = body['startYear']
+      end_year = body['endYear']
       genres_arr = genres.split(', ')
-      return get_random_movie(genres_arr)
+      return get_random_movie(genres_arr, startYear, endYear)
     except:
       print('except')
       return get_random_movie([])
