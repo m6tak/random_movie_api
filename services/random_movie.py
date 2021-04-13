@@ -16,10 +16,14 @@ def get_random_movie(genres, start_year = 1950, end_year = 2024):
   movie_soup = bs(movie_res.content, features="lxml")
 
   movie = random.choice(movie_soup.select('.lister-item'))
-  poster_url = movie.select('img')[0]['src']
   movie_header = movie.select('.lister-item-header')[0]
   title_item = movie_header.select('a')[0]
   imdb_url = title_item['href']
+
+  res_poster = requests.get(f'https://www.imdb.com{imdb_url}')
+  poster_soup = bs(res_poster.content, features="lxml")
+  poster_url = poster_soup.select('.poster')[0].select('img')[0]['src']
+
   title = title_item.get_text()
   year = movie_header.select('span')[1].get_text()
   title_year = f'{title} {year}'
@@ -29,8 +33,3 @@ def get_random_movie(genres, start_year = 1950, end_year = 2024):
     'poster_url': poster_url,
     'imdb_url': f'https://www.imdb.com{imdb_url}'
   }
-
-  
-
-
-get_random_movie('comedy', 2017, 2019)
