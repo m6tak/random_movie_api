@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, Response
+from flask import Flask, request, make_response, Response, abort
 from flask_restful import Resource, Api
 
 from services.random_movie import get_random_movie
@@ -14,5 +14,4 @@ class GetRandomMovie(Resource):
       end_year = body['endYear']
       return get_random_movie(genres, start_year, end_year)
     except:
-      traceback.print_exc()
-      return get_random_movie([])
+      abort(404)
