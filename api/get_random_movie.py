@@ -12,8 +12,7 @@ class GetRandomMovie(Resource):
       genres = body['genres']
       start_year = body['startYear']
       end_year = body['endYear']
-      genres_arr = genres.split(', ')
-      return get_random_movie(genres_arr, start_year, end_year)
+      return get_random_movie(genres, start_year, end_year)
     except:
       traceback.print_exc()
       return get_random_movie([])

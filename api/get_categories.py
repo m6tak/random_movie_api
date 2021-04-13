@@ -5,4 +5,4 @@ from services.categories import categories
 
 class GetCategories(Resource):
   def get(self):
-    return [name for name in categories.keys()]
+    return categories
